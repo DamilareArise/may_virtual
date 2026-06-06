@@ -167,8 +167,8 @@ students = ["Lola", "ade", "shola"]
 # ^ -> XOR
 val1 = 20
 val2 = 10
-print(bin(val1))
-print(bin(val2))
+# print(bin(val1))
+# print(bin(val2))
 # 10100
 #  1010
 
@@ -179,3 +179,126 @@ print(bin(val2))
 # Assignment
 # 1. Conditional statement 
 # 2. Build a grading system.
+
+
+# conditional statement (if/else statement)
+x = 5
+# if x > 3:
+#     print("Yes")
+# else:
+#     print("No")
+    
+    
+    
+# food = ['rice', 'bread', 'eba']
+# drinks = ['fanta', 'coke']
+
+# request = input("Request: ")
+# if request in food:
+#     print(f"{request} is available")
+
+# elif request in drinks:
+#     print(f"{request} is available in drink store")
+
+# else:
+#     print(f"{request} is not available")
+
+
+
+# 70 - 100 -> A  
+# 60 - 69 -> B
+# 50 - 59 -> C
+# 45 - 49 -> D
+# 40 - 44 -> E 
+# 0 - 39 -> F
+
+# score = int(input("Score: "))
+# if score >= 70 and score <= 100:
+#     print("Grade A")
+# elif score >= 60 and score < 70:
+#     print("Grade B")
+# elif score >= 50 and score < 60:
+#     print("Grade C")
+# elif score >= 45 and score < 50:
+#     print("Grade D")
+# elif score >= 40 and score < 45:
+#     print("Grade E")
+# elif score >= 0 and score < 40:
+#     print("Grade F")
+# else:
+#     print("Invalid score")
+
+
+# class-work: 
+# 1. build a simple calculator.
+# 2. Build a simple email validator
+
+
+# ussd = input("USSD: ")
+# if ussd == "*312#":
+#     print("""
+#         1. Buy Data
+#         2. Check balance
+#         #. Exit
+#     """)
+#     choice = input("Choice: ")
+#     if choice == "1":
+#         print("Buy Data")
+#     elif choice == "2":
+#         print("Check Balance")
+#     elif choice == "#":
+#         exit("Goodbye!")
+# else:
+#     print("Invalid USSD code")
+
+
+# python strings
+
+text = "hello everyone. welcome to class." #["H", "e", "l" ....]
+# print(type(text))
+# print(text[3])
+# print(text[-2])
+# print(text[0:5])
+
+# QA = input("What is the capital of Nigeria: ").strip()
+# print(QA)
+# if QA.lower() == "abuja":
+#     print("Correct")
+# else:
+#     print("Wrong Answer")
+
+# print(len(text.strip()))
+
+# print(text.capitalize())
+# print(text.title())
+# print(text.lower())
+# print(text.upper())
+
+# print(text.strip("$%/"))
+# print(text.split('.'))
+
+# Word counter
+# essay = input("Essay: ").strip()
+# no_of_words = len(essay.split())
+# print(f"Total words: {no_of_words}")
+
+# item = ['hello', 'everyone.', 'welcome', 'to', 'class.']
+# print("+".join(item))
+
+# print(text.find("Everyone"))
+# print(text.startswith("hello"))
+# print(text.index('.', 15))
+
+# special character
+# \n - nextline
+# \b - backspacee
+# \r - return
+# \t - tab
+
+# escape character - \
+# r - raw string 
+
+# text = "hello everyone.\\u7685 welcome to class."
+text = r"hello everyone.\u7685 welcome to class."
+print(text)
+
