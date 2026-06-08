@@ -300,6 +300,7 @@ text = "hello everyone. welcome to class." #["H", "e", "l" ....]
 
 # text = "hello everyone.\\u7685 welcome to class."
 text = r"hello everyone.\u7685 welcome to class."
+<<<<<<< HEAD
 # print(text)
 
 
@@ -381,3 +382,7 @@ print(db)
 # 2. Tuple
 # 3. Set
 # 4. Dictionary 
+=======
+print(text)
+
+>>>>>>> 22d92a0c61d5eee902b7e56694299ddab9ebd8fd
