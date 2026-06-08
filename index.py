@@ -300,5 +300,84 @@ text = "hello everyone. welcome to class." #["H", "e", "l" ....]
 
 # text = "hello everyone.\\u7685 welcome to class."
 text = r"hello everyone.\u7685 welcome to class."
-print(text)
+# print(text)
 
+
+# Python Collections / Array
+# 1. List [] or list() - ordered, indexed, mutable/changeable. allows duplicate item.
+students = ['Zeenat', 'Blessing', 'Chris', 'Iyanu', 'Bash', 'Blessing']
+# print(type(students))
+# print(students[4])
+# print(students[-1])
+# slicing
+# print(students[0:3])
+# print(students[:3])
+# print(students[3:])
+# print(students[1][0])
+# print(students[3][2])
+# print(students[2][1])
+# print(students[-1][-1])
+
+# students[2] = "Christopher"
+
+# students.append('Ayomide')
+# students.insert(0, 'Ayomide')
+# students.extend(["Ayomide", 'Tolulope'])
+
+# students.pop(1)
+# students.remove('Blessing')
+
+# duplicate = students.copy()
+# duplicate.pop()
+# print(duplicate)
+
+# students.reverse()
+# print(students)
+
+# print(students.index("Zeenat"))
+
+# prices = [20, 30, 10, 50]
+# print(sum(prices))
+# print(min(prices))
+# print(max(prices))
+
+# print(len(prices))
+# print(sum(prices)/len(prices))
+
+
+# python loop
+# 1. For loop - it works with iterables/sequence types
+
+# for student in students:
+#     print(student, "is a python student")
+
+# for no in range(1, 10, 2):
+#     print(no)
+
+# for x in range(1, 5):
+#     print(f"\n{x} Times Table")
+#     for y in range(1, 5):
+#         print(f"{x} x {y} = {x*y}")
+
+
+db = []
+slot = 10
+for x in range(slot):
+    name = input(f"Name {x + 1}: ")
+    db.append(name)
+    
+    user = input("Press 1 to stop or enter to continue: ")
+    if user == "1":
+        break
+    
+print(db)
+
+# 2. While loop
+
+
+# build a todo app
+
+
+# 2. Tuple
+# 3. Set
+# 4. Dictionary 
