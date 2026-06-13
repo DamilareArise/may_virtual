@@ -360,24 +360,145 @@ students = ['Zeenat', 'Blessing', 'Chris', 'Iyanu', 'Bash', 'Blessing']
 #         print(f"{x} x {y} = {x*y}")
 
 
-db = []
-slot = 10
-for x in range(slot):
-    name = input(f"Name {x + 1}: ")
-    db.append(name)
+# db = []
+# slot = 10
+# for x in range(slot):
+#     name = input(f"Name {x + 1}: ")
+#     db.append(name)
     
-    user = input("Press 1 to stop or enter to continue: ")
-    if user == "1":
-        break
+#     user = input("Press 1 to stop or enter to continue: ")
+#     if user == "1":
+#         break
     
-print(db)
+# print(db)
 
-# 2. While loop
+# 2. While loop: Is a loop based on a condition.
+# x = 5
+# while x >= 0: 
+#     print(x)
+#     x -= 1
 
 
-# build a todo app
+# x = 0
+# while x <= 10:
+#     print(x)
+#     x += 1
+# else:
+#     print("Looping is done!")
+
+# ticket = 10
+# while ticket > 0: 
+#     age = int(input("Age: "))
+#     if age < 18:
+#         print('Too young')
+#         continue
+    
+#     if ticket == 3:
+#         print("Operation terminated.")
+#         break
+    
+#     ticket -= 1
+#     print('Ticket issued. remaining', ticket)
+    
+        
+# cart = []
+
+# while True:
+#     print("""
+#         1. add to cart 
+#         2. remove item
+#         3. view
+#         #. exit  
+#     """)
+#     choice = input("Choice: ").strip()
+#     if choice == "1":
+#         item = input("Item: ")
+#         cart.append(item)
+    
+#     elif choice == "#":
+#         exit("Goodbye!")
+#         # break  
+        
+#     elif choice == "3":
+#         print(cart)      
 
 
-# 2. Tuple
+# print("Yooooo!!!!!") 
+ 
+# Assignment 
+# 1. Build a todo app with functionalities as; add, remove, edit, clear all, view all.
+
+
+# 2. Tuple - ordered, indexed, allows duplicate, immutable/unchangeable
+
+cars = ('Benz', 'Toyota', 'BMW', 'Audi', 'Audi')
+# print(cars[0:3])
+# cars = list(cars)
+# cars[3] = "Bentley"
+
+# unpacking 
+# c1, *all, c2 = cars
+# *c, = cars
+# print(c)
+
+# print(cars.count("BMWs"))
+# print(cars.index('Toyota'))
+
+# store = [
+#     ('shirt', 1000),
+#     ('Trouser', 3000),
+#     ('Shoe', 5000)
+# ]
+
+# print(store)
+# for item in store:
+#     print(item[1])
+
+# for item, price in store:
+#     print(price)
+    
+
+# score = 0
+
+# ques1 = input("What is the capital of Nigeria a.) Abuja b.) Lagos: ").strip()
+# if ques1.lower() == "a":
+#     score += 1
+    
+# ques2 = input("What is the capital of Nigeria a.) Abuja b.) Lagos: ").strip()
+# if ques2.lower() == "a":
+#     score += 1
+    
+# ques3 = input("What is the capital of Nigeria a.) Abuja b.) Lagos: ").strip()
+# if ques3.lower() == "a":
+#     score += 1
+
+
+# print("Result is:", score)
+
+
+score = 0
+
+QA = [
+    ("What is the capital of Nigeria a.) Abuja b.) Lagos", 'a', 10),
+    ("What is the capital of Lagos a.) Abuja b.) Ikeja", 'b', 10),
+    ("What is the capital of Osun a.) Osogbo b.) Lagos", 'a', 10),
+    ("What is the capital of Oyo a.) Oyo b.) Osogbo", 'a', 10),
+    ("What is the capital of Ondo a.) Benin b.) Akure", 'b', 10),
+]
+
+for ques, ans, mark in QA:
+    print(ques)
+    user_ans = input("Ans: ").strip()
+    if user_ans.lower() == ans:
+        score += mark
+        print("Correct")
+    else:
+        print("Wrong")
+        
+
+print(f"Your total score is: {score}")
+
+
+
 # 3. Set
 # 4. Dictionary 
