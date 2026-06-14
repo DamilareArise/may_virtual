@@ -486,19 +486,132 @@ QA = [
     ("What is the capital of Ondo a.) Benin b.) Akure", 'b', 10),
 ]
 
-for ques, ans, mark in QA:
-    print(ques)
-    user_ans = input("Ans: ").strip()
-    if user_ans.lower() == ans:
-        score += mark
-        print("Correct")
-    else:
-        print("Wrong")
+# for ques, ans, mark in QA:
+#     print(ques)
+#     user_ans = input("Ans: ").strip()
+#     if user_ans.lower() == ans:
+#         score += mark
+#         print("Correct")
+#     else:
+#         print("Wrong")
         
 
-print(f"Your total score is: {score}")
+# print(f"Your total score is: {score}")
+
+# 3. Set - unordered, it can't indexed, it doesn't duplicate value, immutable.
+# {} or set() 
+
+cars = {'Benz', 'Toyota', 'BMW', 'Audi', 'Audi'}
+# cars.add('Bentley')
+# cars.update(['Bently', 'Ferrari'])
+# cars.update({"Ferrari",})
+# cars.pop()
+# cars.clear()
+
+# print(type({}))
+
+# item =  ("Ferrari")
+
+# item2 = ("Ferrari", )
+# print(type(item2))
+
+# print(cars)
+
+# cart = set()
+
+# while True:
+#     print("""
+#         1. add to cart 
+#         2. remove item
+#         3. view
+#         #. exit  
+#     """)
+#     choice = input("Choice: ").strip()
+#     if choice == "1":
+#         item = input("Item: ")
+#         cart.add(item)
+    
+#     elif choice == "#":
+#         exit("Goodbye!")
+#         # break  
+        
+#     elif choice == "3":
+#         print(cart)  
+        
+
+setA = {9, 4, 2, 4, 6, 7, 1, 3, 5, 0}
+setB = {8, 11, 10, 2, 3}
+setC = {8, 11, 2}
+# print(setA.union(setB))
+# print(setA.intersection(setB))
+# print(setB.difference(setA))   # setA - setB
+# print(setA.difference(setB) == setB.difference(setA))
+
+
+setA.intersection_update(setB)
+
+# print(setA)
+
+# print(setA.isdisjoint(setC))
+# print(setB.issuperset(setC))
+# print(setC.issubset(setB))
 
 
 
-# 3. Set
 # 4. Dictionary 
+car = {
+    "brand": "Lexus",
+    "model": "Rx350",
+    "color": "Blue",
+    "owner": {
+        "fullname": "John Doe",
+        "address": {
+            "city": "Ibadan",
+            "state": "Oyo"
+        }
+    }
+}
+
+# print(type(car))
+# print(car["model"])
+
+# print(car.keys())
+# print(car.values())
+# print(car.items())
+
+# for key, val in car.items():
+#     print(val)
+
+# car.update({"transmission": "automatic", "engine": "v6", "color":"Grey"})
+# car['color'] = "Grey"
+
+# print(car.get('colors', "Not Found"))   
+# car.pop("model")
+# car.popitem()
+
+# print(car["owner"]['fullname'])
+# print(car["owner"]['address']['city'])
+
+# Assignment
+# build a contact list app 
+[
+    {
+        name,
+        phone,
+        location
+    }
+]
+
+# Python Functions
+
+# OOP
+
+# SQL
+
+# File handling
+
+# Error handling
+
+# Date time
+
+# Ipython
