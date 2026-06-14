@@ -596,9 +596,9 @@ car = {
 # build a contact list app 
 [
     {
-        name,
-        phone,
-        location
+        "name": "",
+        "phone": "",
+        "location": ""
     }
 ]
 
