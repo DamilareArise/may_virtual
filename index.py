@@ -548,7 +548,7 @@ setC = {8, 11, 2}
 # print(setA.difference(setB) == setB.difference(setA))
 
 
-setA.intersection_update(setB)
+# setA.intersection_update(setB)
 
 # print(setA)
 
@@ -603,6 +603,199 @@ car = {
 ]
 
 # Python Functions
+# 1. declaration stage 
+# 2. definition stage
+# 3. Invokation stage
+
+def goHome():
+    print('I am going home.')
+    
+# goHome()
+
+def add():
+    val1 = int(input('Value 1: '))
+    val2 = int(input('Value 2: '))
+    res = val1 + val2
+    print(f"Result: {res}")
+    
+# add()
+
+
+# return function
+
+def getName():
+    return "Zeenat"
+
+# name = getName()
+# print(name)
+
+
+# parameterized function
+
+def run(name, speed=10):
+    print(f"{name} is running at the speed of {speed}km/hr")
+
+# run(speed=10, name='Ayomide')
+# # run('Ayomide', 10)
+# name = input('Name: ')
+# speed = int(input("speed: "))
+# run(name, speed)
+# run('Ayo')
+
+
+def area_of_circle(radius: float, pi: float = 3.142) -> float:
+    """
+        This function gives the result of the area of a circle after providing the radius
+
+    """
+    
+    res = pi * (radius ** 2)
+    return res
+
+# area_of_circle()
+
+
+database = []
+
+def home():
+    print("""
+            Welcome to MyTodo
+        
+        1. Add todo
+        2. Remove todo
+        3. View todo
+        #. exit
+        """)
+    choice = input('Choice: ')
+    if choice == '1':
+        add_todo()
+        
+    elif choice == '2':
+        remove_todo()
+        
+    elif choice == '3':
+        view_todo()
+    
+    elif choice == '#':
+        exit('Goodbye!')
+        
+    else:
+        print('Invalid input. Try again')
+        home() # recursive func
+        
+
+def add_todo():
+    todo = input('Todo: ').strip()
+    if not todo:
+        print('Kindly input a todo')
+    else:
+        database.append(todo)
+        print('Todo added successfully')
+        
+    home()
+
+def remove_todo():
+    pass
+
+def view_todo():
+    if not database:
+        print('No Todo List.')
+    else:
+        # ['sleep', 'eat']
+        # [
+        #     (1, 'sleep'),
+        #     (2, 'eat')
+        # ]
+        
+        for x, todo in enumerate(database, start=1):
+            print(f"{x}. {todo}")
+            
+            
+    home()
+
+# home()
+
+
+# global and local variable 
+
+valA = 10 # global
+
+def add():
+    global valA
+    
+    valB = 20 # local variable
+    # print(valA, valB)
+    # valA += valB
+    
+    valA = valA + valB
+    
+    print(valA)
+    
+def sub():
+    print(valA)
+
+# add()
+# sub()
+
+balance = 0
+
+def dashboard():
+    print("""
+          Welcome to MyBank
+    1. Deposit
+    2. Withdraw
+    3. Check Balance
+    #. exit 
+    """)
+    choice = input('Choice: ')
+    if choice == '1':
+        deposit()
+        
+    elif choice == '2':
+        withdraw()
+        
+    elif choice == '3':
+        check_balance()
+    
+    elif choice == '#':
+        exit('Goodbye!')
+        
+    else:
+        print('Invalid input. Try again')
+        dashboard()
+
+def deposit():
+    global balance
+    
+    amount = float(input("Amount: "))
+    if amount < 1:
+        print('Invalid amount')
+    else:
+        balance += amount
+        print('Deposit successfull')
+        
+    dashboard()
+    
+def withdraw():
+    global balance
+    
+    amount = float(input("Amount: "))
+    if amount < 1: 
+        print('Invalid amount')
+    elif amount > balance:
+        print('Insufficient funds')
+    else:
+        balance-= amount
+        print('withdrawal successfull')
+        
+    dashboard()
+
+def check_balance():
+    print(f'Your balance is {balance}')
+    dashboard()
+    
+
+dashboard()
 
 # OOP
 
