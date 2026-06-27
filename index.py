@@ -785,7 +785,7 @@ def withdraw():
     elif amount > balance:
         print('Insufficient funds')
     else:
-        balance-= amount
+        balance -= amount
         print('withdrawal successfull')
         
     dashboard()
@@ -795,9 +795,180 @@ def check_balance():
     dashboard()
     
 
-dashboard()
+# dashboard()
 
-# OOP
+
+# OOP - Object Oriented Programming
+# object - properties/attributes + functions/methods
+# every object is an instance of a class
+
+
+class Human:
+    # properties
+    gender = 'Male'
+    first_name = "Stella"
+    last_name = "Okonkwo"
+    above_18 = True
+    
+    # functions
+    def intro(self):
+        print(f"My name is {self.first_name} {self.last_name}")
+        
+    
+    def eat(self):
+        print(f"{self.first_name} is eating")
+    
+    
+
+stella = Human()
+# print(stella.gender)
+# stella.intro()
+# stella.eat()
+
+john = Human()
+# print(john.gender)
+# john.first_name = 'John'
+# john.intro()
+
+# print(stella == john)
+
+
+
+class MyBank:
+    bank_name = "MyBank"
+    __balance = 0.0
+    
+    def __init__(self, bankName):
+       self.bank_name = bankName
+    #    self.dashboard()
+    
+    def dashboard(self):
+        print(f"""
+            Welcome to {self.bank_name}
+        1. Deposit
+        2. Withdraw
+        3. Check Balance
+        #. exit 
+        """)
+        choice = input('Choice: ')
+        if choice == '1':
+            self.deposit()
+        elif choice == '2':
+            self.withdraw()
+        elif choice == '3':
+            self.check_balance()
+        elif choice == '#':
+            exit('Goodbye!')
+        else:
+            print("Invalid option")
+            self.dashboard()
+            
+            
+    def deposit(self):
+        amount = float(input('Amount: '))
+        if amount <  1:
+            print('Your amount cannot be less than 1')
+        else:
+            self.__balance += amount
+            print('Deposit successful')
+        
+        self.dashboard()
+        
+    
+    def withdraw(self):
+        amount = float(input('Amount: '))
+        if amount <  1:
+            print('Your amount cannot be less than 1')
+        elif amount > self.__balance:
+            print("Insufficient funds")
+            
+        else:
+            self.__balance -= amount
+            print('Withdrawal successful')
+        
+        self.dashboard()
+    
+    def check_balance(self):
+        print(f'Your balance is {self.__balance}')
+        self.dashboard()
+
+# bank1 = MyBank(bankName='Access')
+# bank1.__balance = 10000000
+# bank1.dashboard()
+
+
+# 4pillars of OOP 
+# 1. Inheritance
+# 2. Encapsulation
+    # i. private
+    # ii. public
+    # iii. static
+    # iv. protected
+    
+    
+# 3. Abstraction
+# 4. Polymorphism
+
+
+class Human:
+    # properties
+    __gender = 'Male'
+    first_name = "Stella"
+    last_name = "Okonkwo"
+    above_18 = True
+    
+    # functions
+    def intro(self):
+        print(f"My name is {self.first_name} {self.last_name}. I am a {self.__gender}")
+        
+    
+    def eat(self):
+        print(f"{self.first_name} is eating")
+        
+    def change_gender(self, gender):
+        self.__gender = gender
+        
+        
+    
+
+# human1 = Human()
+# human1.__gender = 'Female'
+# print(human1.__gender)
+# human1.change_gender('Female')
+# human1.intro()
+
+
+
+class Father:
+    first_name = 'Ojo'
+    __last_name = 'Badmus'
+    hobby = None
+    
+    def __init__(self, my_hobby):
+        self.hobby = my_hobby
+    
+    def intro(self):
+        print(f"My name is {self.first_name} {self.__last_name}. I love {self.hobby}")
+
+
+# father = Father(my_hobby="Listening to News")
+# father.intro()
+
+
+class Son(Father):
+    def __init__(self, my_hobby):
+        super().__init__(my_hobby)
+        self.first_name = 'Adewale'
+        
+        
+    
+
+son = Son(my_hobby='Coding')
+son.intro()
+
+
+
+
 
 # SQL
 
