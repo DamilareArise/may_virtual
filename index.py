@@ -820,12 +820,12 @@ class Human:
     
     
 
-stella = Human()
+# stella = Human()
 # print(stella.gender)
 # stella.intro()
 # stella.eat()
 
-john = Human()
+# john = Human()
 # print(john.gender)
 # john.first_name = 'John'
 # john.intro()
@@ -963,8 +963,16 @@ class Son(Father):
         
     
 
-son = Son(my_hobby='Coding')
-son.intro()
+# son = Son(my_hobby='Coding')
+# son.intro()
+
+
+# modularization 
+
+# scripts - a single file that an execuatble python code
+# module - a script with functions and classes
+# library - a collection of modules
+# frameworks - a colletion of library streamlined to perform a particular task 
 
 
 

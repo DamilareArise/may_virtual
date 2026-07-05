@@ -1,0 +1,102 @@
+
+Relational DBMS (SQL)
+1. It works with structured data (Tabular data)
+2. Relationships between tables are created via a key (primary and Foriegn key)
+
+school database:
+    user table
+    role table
+    userrole table
+    staff table
+    student table
+    revenue table
+    expenditure table
+    department table
+    courses table
+
+1. One to one Relationships
+    user table
+    id  firstname   lastname    email   password    
+    1   John        joe         j@g.com 123
+    2   Mary        Jane        m@g.com 123
+
+    student table
+    id  department  level   user_id(FK)
+    1   DS          3       2
+
+
+    staff table
+    id  department  job_level   user_id(FK)
+    1   DS          3           1
+
+
+
+2. One to many Relationships
+    Department table
+    id  name    
+    1   Data Science
+    2   Software Eng.
+
+    Courses table
+    id  title   course_code    department_id   lead_staff_id
+    1   python  DSE 101        1               1
+    2   django  DSE 201        1               1
+
+
+
+
+3. Many to many Relationships
+    role table
+    id  title   
+    1   admin
+    2.  staff
+    3.  Hr
+    4.  Bursary
+    5.  student
+    6.  Prefect
+
+    userrole table
+    id  user_id     role_id
+    1   1           2
+    2   1           4
+    3   1           1
+    4   2           1
+
+
+
+categories of query in SQL.
+1. DDL -> data definition language;
+CREATE, DROP, TRUNCATE, ALTER
+
+-- CREATE DATABASE ecommerce_schema;
+-- CREATE TABLE users(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    fullname VARCHAR(50),
+    email VARCHAR(50) UNIQUE,
+    phone VARCHAR(12) UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+
+2. DML -> data manipulation language
+INSERT, UPDATE, DELETE
+
+3. DQL -> data query language
+SELECT
+
+DATABASE ARCHITECTURE FOR AN E-COMMERCE APP
+user_end;
+1. user table
+2. role table
+3. user-role table
+
+product-end;
+1. product table
+2. category
+3. product features
+4. product price info table
+
+orders-end;
+1. orders table
+
+payment-end
+2. payment-table
