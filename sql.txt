@@ -75,9 +75,151 @@ CREATE, DROP, TRUNCATE, ALTER
     phone VARCHAR(12) UNIQUE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 )
+-- CREATE TABLE role(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(20) UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+
+-- CREATE TABLE user_role(
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        user_id INT,
+        role_id INT,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE RESTRICT
+    );
+
+-- CREATE TABLE category(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(50) UNIQUE,
+    description TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CREATE TABLE products(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(50),
+    quantity INT,
+    price DECIMAL(10, 2),
+    description TEXT,
+    category_id INT,
+    status VARCHAR(20),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE
+)
+
+-- CREATE TABLE orders(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT,
+    user_id INT,
+    quantity INT,
+    create_at DATETIME,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)
+
+ALTER TABLE orders DROP COLUMN quantity;
+ALTER TABLE orders DROP FOREIGN KEY orders_ibfk_1;
+ALTER TABLE orders DROP COLUMN product_id;
+ALTER TABLE orders ADD COLUMN total_amount DECIMAL(10, 2);
+ALTER TABLE orders CHANGE COLUMN create_at created_at DATETIME DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE orders ADD COLUMN `status` VARCHAR(20);
+
+
+CREATE TABLE order_items(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT,
+    quantity INT,
+    amount DECIMAL(10, 2),
+    order_id INT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+)
+
+
+CREATE TABLE payment(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    amount DECIMAL(10, 2),
+    payment_ref VARCHAR(50),
+    status VARCHAR(20),
+    order_id INT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+)
+
+
 
 2. DML -> data manipulation language
 INSERT, UPDATE, DELETE
+
+INSERT INTO category (id, name, description, created_at) VALUES
+(1, 'Electronics', 'Phones, laptops, and gadgets', NOW()),
+(2, 'Fashion', 'Clothing, shoes, and accessories', NOW()),
+(3, 'Home & Kitchen', 'Appliances and household items', NOW()),
+(4, 'Books', 'Fiction and non-fiction titles', NOW()),
+(5, 'Sports', 'Sporting goods and outdoor gear', NOW());
+
+
+INSERT INTO role (id, name, created_at) VALUES
+(1, 'admin', NOW()),
+(2, 'customer', NOW()),
+(3, 'vendor', NOW());
+
+
+
+INSERT INTO users (id, fullname, email, phone, created_at) VALUES
+(1, 'Damilare Adebayo', 'damilare.a@example.com', '8012345601', NOW()),
+(2, 'Chinwe Okoro', 'chinwe.okoro@example.com', '8012345602', NOW()),
+(3, 'Tunde Bakare', 'tunde.bakare@example.com', '8012345603', NOW()),
+(4, 'Ngozi Umeh', 'ngozi.umeh@example.com', '8012345604', NOW()),
+(5, 'Emeka Nwosu', 'emeka.nwosu@example.com', '8012345605', NOW());
+
+
+INSERT INTO products (id, title, quantity, price, description, category_id, status, created_at) VALUES
+(1, 'Wireless Bluetooth Headphones', 150, 25999.00, 'Noise-cancelling over-ear headphones', 1, 'active', NOW()),
+(2, 'Smartphone 128GB', 80, 189999.00, 'Mid-range Android smartphone', 1, 'active', NOW()),
+(3, 'Men\'s Cotton T-Shirt', 300, 4500.00, 'Plain crew-neck cotton t-shirt', 2, 'active', NOW()),
+(4, 'Non-stick Frying Pan', 120, 8999.00, '28cm non-stick frying pan', 3, 'active', NOW()),
+(5, 'Atomic Habits (Book)', 60, 6500.00, 'Bestselling self-help book by James Clear', 4, 'active', NOW()),
+(6, 'Yoga Mat', 200, 7500.00, 'Non-slip 6mm thick yoga mat', 5, 'active', NOW()),
+(7, 'Laptop 15.6" 8GB RAM', 40, 349999.00, 'Everyday use laptop', 1, 'active', NOW()),
+(8, 'Women\'s Sneakers', 90, 15999.00, 'Comfortable running sneakers', 2, 'active', NOW());
+
+
+INSERT INTO orders (id, user_id, created_at, total_amount, status) VALUES
+(1, 1, NOW(), 215998.00, 'completed'),
+(2, 2, NOW(), 4500.00, 'pending'),
+(3, 3, NOW(), 349999.00, 'completed'),
+(4, 4, NOW(), 14000.00, 'cancelled'),
+(5, 5, NOW(), 23999.00, 'processing');
+
+
+INSERT INTO user_role (id, user_id, role_id) VALUES
+(1, 1, 1), -- Damilare: admin
+(2, 2, 2), -- Chinwe: customer
+(3, 3, 2), -- Tunde: customer
+(4, 4, 3), -- Ngozi: vendor
+(5, 5, 2); -- Emeka: customer
+
+
+INSERT INTO order_items (id, product_id, quantity, amount, order_id, created_at) VALUES
+(1, 1, 1, 25999.00, 1, NOW()),
+(2, 2, 1, 189999.00, 1, NOW()),
+(3, 3, 1, 4500.00, 2, NOW()),
+(4, 7, 1, 349999.00, 3, NOW()),
+(5, 4, 1, 8999.00, 4, NOW()),
+(6, 6, 1, 7500.00, 4, NOW()),
+(7, 5, 1, 6500.00, 5, NOW()),
+(8, 8, 1, 15999.00, 5, NOW());
+
+
+INSERT INTO payment (id, amount, payment_ref, status, order_id, created_at) VALUES
+(1, 215998.00, 'PAY-REF-0001', 'success', 1, NOW()),
+(2, 4500.00, 'PAY-REF-0002', 'pending', 2, NOW()),
+(3, 349999.00, 'PAY-REF-0003', 'success', 3, NOW()),
+(4, 14000.00, 'PAY-REF-0004', 'refunded', 4, NOW()),
+(5, 23999.00, 'PAY-REF-0005', 'success', 5, NOW());
 
 3. DQL -> data query language
 SELECT
@@ -85,17 +227,28 @@ SELECT
 DATABASE ARCHITECTURE FOR AN E-COMMERCE APP
 user_end;
 1. user table
-2. role table
-3. user-role table
+2. role table (id, name, created_at)
+3. user-role table (a user having multiple roles and a role having multiple user under it)
 
 product-end;
 1. product table
 2. category
-3. product features
-4. product price info table
+3. product features (product_id , key, value )
+4. product price info table (price_NGN, price_USD, price_CAD)
 
 orders-end;
-1. orders table
+1. orders  (user_id, amount, status )
+
+id      amount      status      user_id
+1       20000       pending     1
+
+
+2. order_items (order_id, product_id, quantity, amount)
+id      product_id      quantity        amount      order_id
+1       12                  2           10000           1
+2       20                  1           10000           1
+
 
 payment-end
-2. payment-table
+2. payment-table (order_id, amount, payment_ref, created)
+
