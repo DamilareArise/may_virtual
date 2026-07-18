@@ -221,8 +221,142 @@ INSERT INTO payment (id, amount, payment_ref, status, order_id, created_at) VALU
 (4, 14000.00, 'PAY-REF-0004', 'refunded', 4, NOW()),
 (5, 23999.00, 'PAY-REF-0005', 'success', 5, NOW());
 
+
+
 3. DQL -> data query language
-SELECT
+
+-- All columns
+SELECT * FROM products;
+
+-- Specific columns
+SELECT title, price FROM products;
+
+-- Aliasing columns
+SELECT title as `Product Name`, price as `Product Cost` FROM products;
+
+
+-- Comparison operators
+SELECT * FROM products where price > 4500;
+SELECT * FROM products where price <= 4500;
+SELECT * FROM products where price = 4500;
+
+-- BETWEEN
+SELECT * FROM products where price BETWEEN 4000 AND 20000;
+
+-- IN
+SELECT * FROM orders where status IN ('processing', 'pending');
+
+-- LIKE (pattern matching)
+SELECT * FROM `users` WHERE fullname LIKE "d%";     -- startswith
+SELECT * FROM `users` WHERE fullname LIKE "%o";     -- endswith
+SELECT * FROM `users` WHERE fullname LIKE "%d%";     -- includes
+
+-- IS NULL / IS NOT NULL
+SELECT * FROM `products` WHERE title IS NULL;
+SELECT * FROM `products` WHERE title IS NOT NULL;
+
+
+-- Combining AND / OR
+SELECT * FROM `products` WHERE category_id = 1 AND price < 50000;
+SELECT * FROM `products` WHERE category_id = 1 or category_id = 2;
+
+-- ORDER BY & LIMIT
+SELECT title, price FROM products ORDER BY price ASC;
+SELECT title, price FROM products ORDER BY price DESC;
+SELECT title, price FROM products ORDER BY price ASC LIMIT 3;
+
+-- Unique order statuses
+SELECT DISTINCT status FROM `orders`;
+
+
+SELECT COUNT(*) as `TOTAL PRODUCT` FROM products;
+SELECT AVG(price) as `AVG PRICE` FROM products;
+SELECT MAX(price) as `MOST EXPENSIVE`, MIN(price) as `CHEAPEST` FROM products;
+SELECT SUM(price) as `Total amount` FROM products;
+
+-- Count products per category
+SELECT category_id, COUNT(*) as `Products Count` FROM products GROUP BY category_id;
+SELECT status, COUNT(*) FROM `orders` GROUP BY status;
+
+-- Total spent per user
+SELECT user_id, SUM(total_amount) as total_spent FROM `orders` GROUP BY user_id;
+
+
+-- Only categories with more than 1 product (HAVING filters after grouping)
+SELECT category_id, COUNT(*) FROM products GROUP BY category_id HAVING COUNT(*) > 1;
+
+-- Checking for the total Order having status completed
+SELECT status, COUNT(*) FROM `orders` GROUP BY status HAVING status = 'completed';
+
+-- INNER JOIN: products with their category name
+SELECT p.title, p.quantity, p.price, c.name as category_name FROM products as p INNER JOIN category as c ON p.category_id = c.id;
+
+-- INNER JOIN: orders with the user who placed them
+
+-- Multi-table JOIN: order items with product and order info
+SELECT o.total_amount, o.status, u.fullname, r.name as `user_role` FROM orders as o INNER JOIN users as u ON u.id = o.user_id INNER JOIN user_role as ur ON ur.user_id = u.id INNER JOIN role as r ON ur.role_id = r.id;
+
+
+-- LEFT JOIN: show all users, even those with no orders
+SELECT * FROM users as u LEFT JOIN orders as o ON u.id = o.user_id;
+-- LEFT JOIN: products that have never been ordered
+SELECT * FROM products as p LEFT JOIN order_items as oi ON p.id = oi.product_id;
+
+ASSIGNMENT.
+-- JOIN with role via the junction table user_role
+-- Products priced above the average price
+-- Users who have placed at least one order
+-- Orders with their payment status via a correlated subquery
+-- Revenue per category, highest first
+-- Each user's full order history with payment status
+
+
+category
+id   name
+1    Electronics
+2    Fashion
+3    Home
+
+product
+id  title  category_id 
+1   A      1
+2   B      2
+3   C      
+
+inner join
+id  title  category_id  name
+1   A      1            Electronics
+2   B      2            Fashion
+
+
+outer join
+id  title  category_id  name
+1   A      1            Electronics
+2   B      2            Fashion
+3   C      NUll         NULL
+4   NULL   NUll         Home
+
+
+LEFT OUTER JOIN (product, category)
+id  title  category_id  name
+1   A      1            Electronics
+2   B      2            Fashion
+3   C      NUll         NULL
+
+RIGHT OUTER JOIN (product, category)
+id  title  category_id  name
+1   A      1            Electronics
+2   B      2            Fashion
+4   NULL   NUll         Home
+
+
+
+
+
+
+
+
+
 
 DATABASE ARCHITECTURE FOR AN E-COMMERCE APP
 user_end;
@@ -251,4 +385,7 @@ id      product_id      quantity        amount      order_id
 
 payment-end
 2. payment-table (order_id, amount, payment_ref, created)
+
+
+
 
