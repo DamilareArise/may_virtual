@@ -388,10 +388,3 @@ id      product_id      quantity        amount      order_id
 
 payment-end
 2. payment-table (order_id, amount, payment_ref, created)
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 9a3595602047d12ac64ed2a5b110bf81195c4c39
