@@ -221,8 +221,11 @@ INSERT INTO payment (id, amount, payment_ref, status, order_id, created_at) VALU
 (4, 14000.00, 'PAY-REF-0004', 'refunded', 4, NOW()),
 (5, 23999.00, 'PAY-REF-0005', 'success', 5, NOW());
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9a3595602047d12ac64ed2a5b110bf81195c4c39
 3. DQL -> data query language
 
 -- All columns
@@ -386,6 +389,9 @@ id      product_id      quantity        amount      order_id
 payment-end
 2. payment-table (order_id, amount, payment_ref, created)
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 9a3595602047d12ac64ed2a5b110bf81195c4c39
